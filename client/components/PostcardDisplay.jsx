@@ -23,12 +23,10 @@ class PostcardDisplay extends React.Component {
 
     return (
       <div className="postcardDisplayed">
-        {senderName}
-        {senderLocation}
-        {recipientName}
-        {recipientEmail}
-        {message}
-        {date}
+        From: {senderName}, in {senderLocation}
+        To: {recipientName}, {recipientEmail}
+        Message: {message}
+        Date: {date}
       </div>
     );
   }

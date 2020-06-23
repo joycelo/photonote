@@ -17,6 +17,27 @@ class MainContain extends React.Component {
     this.createPostcard = this.createPostcard.bind(this);
   }
 
+  componentDidMount() {
+    fetch(
+      "http://dataservice.accuweather.com/currentconditions/v1/349727?apikey=ndkujYDJO1SNUaoHApzNT1O2Hjq22LRv"
+    )
+      .then((data) => data.json())
+      .then((data) => {
+        this.setState({
+          urls: data,
+        });
+        console.log("THIS STATE URLS*****", data[0].Temperature.Imperial);
+        console.log(
+          "THIS STATE URLS*****",
+          data[0].Temperature.Imperial.Value + data[0].Temperature.Imperial.Unit
+        );
+      })
+      // JML: add .catch to cover errors, for best practice
+      .catch((err) => {
+        console.log("Error:", err);
+      });
+  }
+
   createPostcard(e) {
     console.log("SENDER NAME INPUT VALUE*****", this.senderNameInput.value);
     if (
@@ -32,7 +53,7 @@ class MainContain extends React.Component {
         recipientName: this.recipientNameInput.value,
         recipientEmail: this.recipientEmailInput.value,
         message: this.messageInput.value,
-        date: Date.now(),
+        date: new Date(Date.now()).toString(),
       });
       this.senderNameInput.value = "";
       this.senderLocationInput.value = "";
@@ -46,6 +67,14 @@ class MainContain extends React.Component {
   render() {
     return (
       <div className="mainContainer">
+        <PostcardDisplay
+          senderName={this.state.senderName}
+          senderLocation={this.state.senderLocation}
+          recipientName={this.state.recipientName}
+          recipientEmail={this.state.recipientEmail}
+          message={this.state.message}
+          date={this.state.date}
+        />
         <div className="postcardCreator">
           <form onSubmit={this.createPostcard}>
             <input
@@ -77,14 +106,6 @@ class MainContain extends React.Component {
             <button type="submit">Create Postcard</button>
           </form>
         </div>
-        <PostcardDisplay
-          senderName={this.state.senderName}
-          senderLocation={this.state.senderLocation}
-          recipientName={this.state.recipientName}
-          recipientEmail={this.state.recipientEmail}
-          message={this.state.message}
-          date={this.state.date}
-        />
       </div>
     );
   }

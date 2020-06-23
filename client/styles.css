@@ -1,34 +1,56 @@
+html,
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  background-color: #e5ff96;
+  text-align: center;
+  background-image: url("https://download.hipwallpaper.com/desktop/1600/900/34/2/wbNgmd.jpg");
+}
+
 h1 {
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #fff70a;
-    text-shadow: 1px 1px #a232a8;
-    font-size: 42;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #fff70a;
+  text-shadow: 1px 1px #a232a8;
+  font-size: 42;
 }
 
 #create-text {
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    color: green;
-    text-shadow: 1px 1px yellow;
-    font-size: 20;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  color: green;
+  text-shadow: 1px 1px yellow;
+  font-size: 20;
 }
 
 .postcardCreator {
-    text-align: center;
+  text-align: center;
 }
 
 input {
-    width: 30%;
+  width: 45%;
+  padding: 3px;
 }
 
 input::placeholder {
-    text-align: left;
-    font-size: 14;
-    font-weight: bold;
-    color: rgb(0, 145, 255);
+  text-align: left;
+  font-size: 16;
+  font-weight: thin;
+  color: lightgrey;
 }
 
 #input-message {
-    height: 20%;
+  height: 20%;
+}
+
+.postcardDisplayed {
+  display: inline-block;
+  border: 1px solid black;
+  background-color: yellow;
+  width: 591px;
+  height: 399px;
+  margin: 20px;
 }
