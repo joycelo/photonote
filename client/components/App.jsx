@@ -1,7 +1,8 @@
-import React, { Component } from "react";
-import Wrapper from "../containers/MainContainer.jsx";
+import React from "react";
+import ReactDOM from "react-dom";
+import MainContain from "./MainContain.jsx";
 
-class App extends Component {
+class App extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -9,10 +10,11 @@ class App extends Component {
     render() {
         return (
             < div >
-                <Wrapper />
+                <h1> E-POSTCARDS GALORE!</h1>
+                <MainContain />
             </div >
         );
     }
 }
 
-export default App;
+ReactDOM.render(<App />, document.querySelector("#root"));

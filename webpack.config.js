@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-    entry: './client/index.js',
+    entry: './client/components/App.jsx',
     output: {
         path: path.resolve(__dirname, 'build'),
         filename: 'bundle.js',
@@ -31,4 +31,13 @@ module.exports = {
             },
         ],
     },
+    // plugins: [
+    //     new HtmlWebPackPlugin({
+    //         template: './index.html',
+    //         filename: './index.html',
+    //     }),
+    //     new CopyPlugin([
+    //         { from: './src/style.css' },
+    //     ]),
+    // ],
 };
