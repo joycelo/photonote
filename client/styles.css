@@ -1,0 +1,15 @@
+#header {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #fff70a;
+    text-shadow: 1px 1px #a232a8;
+    font-size: 42;
+}
+
+#create-text {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: green;
+    text-shadow: 1px 1px yellow;
+    font-size: 20;
+}
