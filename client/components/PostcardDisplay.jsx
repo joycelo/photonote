@@ -1,24 +1,34 @@
 import React from "react";
 // import { urlencoded } from "express";
+// import html2canvas from "html2canvas";
+// const puppeteer = require("puppeteer");
 
 class PostcardDisplay extends React.Component {
   render() {
     let senderName = (
-      <p key={this.props.senderName + 1}>{this.props.senderName}</p>
+      <div key={this.props.senderName + 1}>
+        <span id="from-text">FROM</span> {this.props.senderName}
+      </div>
     );
     let senderLocation = (
-      <p key={this.props.senderLocation + 2}>{this.props.senderLocation}</p>
+      <div key={this.props.senderLocation + 2}>
+        <span id="currently-in-text">CURRENTLY IN</span>{" "}
+        {this.props.senderLocation}
+      </div>
     );
-    let recipientName = (
-      <p key={this.props.recipientName + 3}>{this.props.recipientName}</p>
+    let recipientNameEmail = (
+      <div key={this.props.recipientName + 3}>
+        <span id="to-text">TO</span> {this.props.recipientName} [
+        {this.props.recipientEmail}]:
+      </div>
     );
-    let recipientEmail = (
-      <p key={this.props.recipientEmail + 4}>{this.props.recipientEmail}</p>
-    );
-    let message = <p key={this.props.message + 5}>{this.props.message}</p>;
-    let date = <p key={this.props.date + 6}>{this.props.date}</p>;
+    // let recipientEmail = (
+    //   <div key={this.props.recipientEmail + 4}>{this.props.recipientEmail}</div>
+    // );
+    let message = <div key={this.props.message + 5}>{this.props.message}</div>;
+    let date = <div key={this.props.date + 6}>{this.props.date}</div>;
     let temperature = (
-      <p key={this.props.temperature + 7}>{this.props.temperature}</p>
+      <div key={this.props.temperature + 7}>{this.props.temperature}</div>
     );
 
     console.log("TEMPERATURE******", temperature);
@@ -90,25 +100,27 @@ class PostcardDisplay extends React.Component {
           Fill out all fields below to send an e-postcard!
         </div>
         <div id="date">{date}</div>
+        <br />
         <div id="left-side">
           <div id="left-text">
+            <div id="recipientName">{recipientNameEmail}</div>
+            <br />
+            {/* <div id="recipientName">{recipientNameEmail}</div> */}
+
+            {/* <div id="recipientEmail">{recipientEmail}</div> */}
             <div id="message">{message}</div>
+            <br />
             <div id="senderName">{senderName}</div>
             <div id="senderLocation">{senderLocation}</div>
-            <div id="recipientName">{recipientName}</div>
-            <div id="recipientEmail">{recipientEmail}</div>
           </div>
         </div>
-        <div id="left-side">
+        <div id="vertical-line"></div>
+        <div id="right-side">
           <div id="right-text">
-            {/* <div id="recipientName">{recipientName}</div>
-            <div id="recipientEmail">{recipientEmail}</div> */}
+            {/* <div id="recipientName">{recipientNameEmail}</div> */}
           </div>
         </div>
         <img src={scenicImage} id="addedImage" />
-        var c = document.getElementById('the_canvas_element_id'); var t =
-        c.getContext('2d'); window.open('',
-        document.getElementById('the_canvas_element_id').toDataURL());
       </div>
     );
   }

@@ -103,6 +103,12 @@ button {
   z-index: -1;
 }
 
+#from-text,
+#currently-in-text,
+#to-text {
+  color: rgb(169, 255, 152);
+}
+
 #addedImage {
   width: 600px;
   height: 400px;
@@ -129,24 +135,36 @@ button {
 
 #right-side {
   position: relative;
-  /* top: 0;
-  left: 0px; */
+  top: 0;
+  left: 20px;
   z-index: 1;
   width: 300px;
   height: 400px;
 }
 
-#date {
+/* #date {
   background-color: rgba(179, 167, 112, 0.4);
+  z-index: 1;
+} */
+
+#date {
+  background-color: rgba(179, 112, 179, 0.4);
   z-index: 1;
 }
 
-#message,
-#senderName,
+/* #senderName,
 #senderLocation,
 #recipientName,
 #recipientEmail {
   background-color: rgba(84, 78, 52, 0.4);
+} */
+
+#senderName,
+#senderLocation,
+#recipientName,
+#recipientEmail,
+#message {
+  background-color: rgba(0, 11, 75, 0.482);
 }
 
 #date {
@@ -156,4 +174,13 @@ button {
   left: -10px;
   margin: 2px;
   width: 600px;
+}
+
+#vertical-line {
+  border-left: 2px solid white;
+  height: 290px;
+  position: absolute;
+  top: 230px;
+  left: 840px;
+  z-index: 1;
 }
