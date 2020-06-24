@@ -35,7 +35,7 @@ h1 {
 }
 
 input {
-  width: 35%;
+  width: 75%;
   height: 30px;
   padding: 3px;
   border: 2px dotted red;
@@ -44,7 +44,7 @@ input {
 }
 
 textarea {
-  width: 35%;
+  width: 75%;
   padding: 3px;
   border: 2px dotted red;
   border-radius: 3px;
@@ -79,6 +79,13 @@ button {
   height: 20%;
 }
 
+#pre-text {
+  text-align: center;
+  position: relative;
+  top: 185px;
+  color: black;
+}
+
 .postcardDisplayed {
   display: inline-block;
   border: 9px solid black;
@@ -91,8 +98,9 @@ button {
   margin: 20px;
   font-family: Pangolin;
   font-size: 18;
-  color: blue;
+  color: white;
   overflow: hidden;
+  z-index: -1;
 }
 
 #addedImage {
@@ -100,8 +108,7 @@ button {
   height: 400px;
   position: absolute;
   top: 180px;
-  left: 525px;
-  border: 0;
+  left: 540px;
   z-index: 0;
 }
 
@@ -115,10 +122,38 @@ button {
   position: relative;
   top: 0;
   left: 10px;
+  z-index: 1;
+  width: 250px;
+  height: 400px;
 }
 
 #right-side {
   position: relative;
-  top: 0;
-  right: 10px;
+  /* top: 0;
+  left: 0px; */
+  z-index: 1;
+  width: 300px;
+  height: 400px;
+}
+
+#date {
+  background-color: rgba(179, 167, 112, 0.4);
+  z-index: 1;
+}
+
+#message,
+#senderName,
+#senderLocation,
+#recipientName,
+#recipientEmail {
+  background-color: rgba(84, 78, 52, 0.4);
+}
+
+#date {
+  text-align: center;
+  position: relative;
+  top: -5px;
+  left: -10px;
+  margin: 2px;
+  width: 600px;
 }

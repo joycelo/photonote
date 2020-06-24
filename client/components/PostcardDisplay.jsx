@@ -17,6 +17,11 @@ class PostcardDisplay extends React.Component {
     );
     let message = <p key={this.props.message + 5}>{this.props.message}</p>;
     let date = <p key={this.props.date + 6}>{this.props.date}</p>;
+    let temperature = (
+      <p key={this.props.temperature + 7}>{this.props.temperature}</p>
+    );
+
+    console.log("TEMPERATURE******", temperature);
 
     // Images:
     // Bangkok, Thailand: https://www.fodors.com/wp-content/uploads/2019/04/HERO_BangkokTips_Hero_shutterstock_367503629.jpg
@@ -81,18 +86,29 @@ class PostcardDisplay extends React.Component {
         To: {recipientName}, {recipientEmail}
         Message: {message}
         Date: {date} */}
+        <div id="pre-text">
+          Fill out all fields below to send an e-postcard!
+        </div>
+        <div id="date">{date}</div>
         <div id="left-side">
-          <div id="date">{date}</div>
-          <div id="message">Message: {message}</div>
-          <div id="senderName">{senderName}</div>
-          <div id="senderLocation">{senderLocation}</div>
+          <div id="left-text">
+            <div id="message">{message}</div>
+            <div id="senderName">{senderName}</div>
+            <div id="senderLocation">{senderLocation}</div>
+            <div id="recipientName">{recipientName}</div>
+            <div id="recipientEmail">{recipientEmail}</div>
+          </div>
         </div>
-        <div id="right-side">
-          <div id="recipientName">{recipientName}</div>
-          <div id="recipientEmail">{recipientEmail}</div>
+        <div id="left-side">
+          <div id="right-text">
+            {/* <div id="recipientName">{recipientName}</div>
+            <div id="recipientEmail">{recipientEmail}</div> */}
+          </div>
         </div>
-
         <img src={scenicImage} id="addedImage" />
+        var c = document.getElementById('the_canvas_element_id'); var t =
+        c.getContext('2d'); window.open('',
+        document.getElementById('the_canvas_element_id').toDataURL());
       </div>
     );
   }
