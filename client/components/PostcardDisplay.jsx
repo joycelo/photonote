@@ -142,6 +142,12 @@ class PostcardDisplay extends React.Component {
         </div>
         <div id="vertical-line"></div>
         <img src={scenicImage} id="addedImage" />
+        <img
+          src="https://blog.hubspot.com/hs-fs/hub/53/file-2454057786-jpg/Agency_Post/Blog_Images/love-stamp-1991.jpg?width=236&name=love-stamp-1991.jpg"
+          id="stamp"
+          width="80px"
+          height="105px"
+        />
       </div>
     );
   }

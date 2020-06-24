@@ -36,6 +36,12 @@ h1 {
   left: 503px;
 }
 
+#instructions {
+  position: absolute;
+  top: 20px;
+  left: 300px;
+}
+
 #create-text {
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
@@ -53,7 +59,7 @@ input {
   height: 30px;
   padding: 3px;
   border: 2px dotted red;
-  border-radius: 3px;
+  border-radius: 5px;
   margin: 1px;
   box-shadow: 3px 3px 3px rgb(3, 70, 129);
 }
@@ -62,7 +68,7 @@ textarea {
   width: 75%;
   padding: 3px;
   border: 2px dotted red;
-  border-radius: 3px;
+  border-radius: 5px;
   margin: 1px;
   box-shadow: 3px 3px 3px rgb(3, 70, 129);
 }
@@ -239,7 +245,12 @@ button {
   top: -5px;
   left: -10px;
   margin: 2px;
-  width: 600px;
+  width: 500px;
+}
+
+#message {
+  border: 3px dotted rgb(169, 255, 152);
+  padding: 3px;
 }
 
 #vertical-line {
@@ -249,4 +260,10 @@ button {
   top: 230px;
   left: 840px;
   z-index: 1;
+}
+
+#stamp {
+  position: absolute;
+  top: 170px;
+  left: 995px;
 }

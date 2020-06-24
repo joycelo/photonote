@@ -85,11 +85,11 @@ class MainContain extends React.Component {
       } else if (this.senderLocationInput.value === "New York City") {
         cityKey = 349727;
       }
-
+      //Note: May need to refresh accuweather key (if exceeded use or duration allowed for use).
       fetch(
         "http://dataservice.accuweather.com/currentconditions/v1/" +
           cityKey +
-          "?apikey=ndkujYDJO1SNUaoHApzNT1O2Hjq22LRv"
+          "?apikey=a98UvM75zIKzhs60giSdtvHaiGLA7AhN"
       )
         .then((data) => data.json())
         .then((data) => {
@@ -343,7 +343,7 @@ class MainContain extends React.Component {
                 style={{ cursor: "pointer" }}
                 id="upload-image-button"
               >
-                Click to Add Image (Optional)
+                Add Image (Optional)
               </label>
             </p>
             <br />
