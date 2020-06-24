@@ -67,8 +67,29 @@ class MainContain extends React.Component {
       this.recipientEmailInput.value !== "" &&
       this.messageInput.value !== ""
     ) {
+      let cityKey;
+      if (this.senderLocationInput.value === "Hong Kong") {
+        cityKey = 1123655;
+      } else if (this.senderLocationInput.value === "Bangkok") {
+        cityKey = 318849;
+      } else if (this.senderLocationInput.value === "London") {
+        cityKey = 328328;
+      } else if (this.senderLocationInput.value === "Macau") {
+        cityKey = 60090;
+      } else if (this.senderLocationInput.value === "Singapore") {
+        cityKey = 300597;
+      } else if (this.senderLocationInput.value === "Paris") {
+        cityKey = 623;
+      } else if (this.senderLocationInput.value === "Dubai") {
+        cityKey = 323091;
+      } else if (this.senderLocationInput.value === "New York City") {
+        cityKey = 349727;
+      }
+
       fetch(
-        "http://dataservice.accuweather.com/currentconditions/v1/349727?apikey=ndkujYDJO1SNUaoHApzNT1O2Hjq22LRv"
+        "http://dataservice.accuweather.com/currentconditions/v1/" +
+          cityKey +
+          "?apikey=ndkujYDJO1SNUaoHApzNT1O2Hjq22LRv"
       )
         .then((data) => data.json())
         .then((data) => {
