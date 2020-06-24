@@ -11,13 +11,13 @@ class PostcardDisplay extends React.Component {
     let senderLocation = (
       <div key={this.props.senderLocation + 2}>
         <span id="currently-in-text">CURRENTLY IN</span>{" "}
-        {this.props.senderLocation}
+        {this.props.senderLocation} ({this.props.weather})
       </div>
     );
     let recipientNameEmail = (
       <div key={this.props.recipientName + 3}>
         <span id="to-text">TO</span> {this.props.recipientName} [
-        {this.props.recipientEmail}]:
+        {this.props.recipientEmail}]<span id="colon">:</span>
       </div>
     );
     // let recipientEmail = (
@@ -25,12 +25,10 @@ class PostcardDisplay extends React.Component {
     // );
     let message = <div key={this.props.message + 5}>{this.props.message}</div>;
     let date = <div key={this.props.date + 6}>{this.props.date}</div>;
-    let temperature = (
-      <div key={this.props.temperature + 7}>{this.props.temperature}</div>
-    );
+    let weather = <div key={this.props.weather + 7}>{this.props.weather}</div>;
     let image = <div key={this.props.image + 8}>{this.props.image}</div>;
 
-    console.log("TEMPERATURE******", temperature);
+    console.log("TEMPERATURE******", weather);
 
     // Images:
     // Bangkok, Thailand: https://www.fodors.com/wp-content/uploads/2019/04/HERO_BangkokTips_Hero_shutterstock_367503629.jpg

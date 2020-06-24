@@ -12,7 +12,7 @@ class MainContain extends React.Component {
       recipientEmail: null,
       message: null,
       date: null,
-      currentTemperature: null,
+      weather: null,
       image: null,
     };
 
@@ -30,31 +30,35 @@ class MainContain extends React.Component {
   // Macau: 60090
   // Singapore:300597
 
-  componentDidMount() {
-    fetch(
-      "http://dataservice.accuweather.com/currentconditions/v1/349727?apikey=ndkujYDJO1SNUaoHApzNT1O2Hjq22LRv"
-    )
-      .then((data) => data.json())
-      .then((data) => {
-        this.setState({
-          temperature:
-            data[0].Temperature.Imperial.Value +
-            data[0].Temperature.Imperial.Unit,
-        });
-        console.log("THIS STATE URLS*****", data[0].Temperature.Imperial);
-        console.log(
-          "THIS STATE URLS*****",
-          data[0].Temperature.Imperial.Value + data[0].Temperature.Imperial.Unit
-        );
-      })
-      // JML: add .catch to cover errors, for best practice
-      .catch((err) => {
-        console.log("Error:", err);
-      });
-  }
+  //   componentDidMount() {
+  //     fetch(
+  //       "http://dataservice.accuweather.com/currentconditions/v1/349727?apikey=ndkujYDJO1SNUaoHApzNT1O2Hjq22LRv"
+  //     )
+  //       .then((data) => data.json())
+  //       .then((data) => {
+  //         this.setState({
+  //           weather:
+  //             data[0].WeatherText +
+  //             " @ " +
+  //             data[0].Temperature.Imperial.Value +
+  //             data[0].Temperature.Imperial.Unit,
+  //         });
+  //         console.log("Weather Text*****", data[0].WeatherText);
+  //         console.log(
+  //           "THIS STATE URLS*****",
+  //           data[0].Temperature.Imperial.Value + data[0].Temperature.Imperial.Unit
+  //         );
+  //       })
+  //       // JML: add .catch to cover errors, for best practice
+  //       .catch((err) => {
+  //         console.log("Error:", err);
+  //       });
+  //   }
 
+  //   //adding new one:
   createPostcard(e) {
     console.log("SENDER NAME INPUT VALUE*****", this.senderNameInput.value);
+    e.preventDefault();
     if (
       this.senderNameInput.value !== "" &&
       this.senderEmailInput.value !== "" &&
@@ -63,73 +67,170 @@ class MainContain extends React.Component {
       this.recipientEmailInput.value !== "" &&
       this.messageInput.value !== ""
     ) {
-      //   let cityKey;
-      //   console.log(
-      //     "THIS SENDERLOCATION INPUT VALUE*****",
-      //     this.senderLocation.Input.value
-      //   );
-      //   if (this.senderLocation.Input.value === "Hong Kong") {
-      //     cityKey = 1123655;
-      //   } else if (this.senderLocation.Input.value === "Bangkok") {
-      //     cityKey = 318849;
-      //   } else if (this.senderLocation.Input.value === "London") {
-      //     cityKey = 328328;
-      //   } else if (this.senderLocation.Input.value === "Macau") {
-      //     cityKey = 60090;
-      //   } else if (this.senderLocation.Input.value === "Singapore") {
-      //     cityKey = 300597;
-      //   } else if (this.senderLocation.Input.value === "Paris") {
-      //     cityKey = 623;
-      //   } else if (this.senderLocation.Input.value === "Dubai") {
-      //     cityKey = 323091;
-      //   } else if (this.senderLocation.Input.value === "New York City") {
-      //     cityKey = 349727;
-      //   }
-
-      //   fetch(
-      //     `http://dataservice.accuweather.com/currentconditions/v1/${cityKey}?apikey=ndkujYDJO1SNUaoHApzNT1O2Hjq22LRv`
-      //   )
-      //     .then((data) => data.json())
-      //     .then((data) => {
-      this.setState({
-        // currentTemperature: data[0].Temperature.Imperial.Value,
-        senderName: this.senderNameInput.value,
-        senderEmail: this.senderEmailInput.value,
-        senderLocation: this.senderLocationInput.value,
-        recipientName: this.recipientNameInput.value,
-        recipientEmail: this.recipientEmailInput.value,
-        message: this.messageInput.value,
-        date: new Date(Date.now()).toString(),
-      });
-      //   console.log("THIS STATE URLS*****", data[0].Temperature.Imperial);
-      //   console.log(
-      //     "THIS STATE URLS*****",
-      //     data[0].Temperature.Imperial.Value + data[0].Temperature.Imperial.Unit
-      //   );
-
-      //   this.setState({
-      //     senderName: this.senderNameInput.value,
-      //     senderLocation: this.senderLocationInput.value,
-      //     recipientName: this.recipientNameInput.value,
-      //     recipientEmail: this.recipientEmailInput.value,
-      //     message: this.messageInput.value,
-      //     date: new Date(Date.now()).toString(),
-      //   });
-      // })
-      // // JML: add .catch to cover errors, for best practice
-      // .catch((err) => {
-      //   console.log("Error:", err);
-      // });
-
-      this.senderNameInput.value = "";
-      this.senderEmailInput.value = "";
-      this.senderLocationInput.value = "";
-      this.recipientNameInput.value = "";
-      this.recipientEmailInput.value = "";
-      this.messageInput.value = "";
+      fetch(
+        "http://dataservice.accuweather.com/currentconditions/v1/349727?apikey=ndkujYDJO1SNUaoHApzNT1O2Hjq22LRv"
+      )
+        .then((data) => data.json())
+        .then((data) => {
+          this.setState({
+            weather:
+              data[0].WeatherText.toLowerCase() +
+              " @ " +
+              data[0].Temperature.Imperial.Value +
+              data[0].Temperature.Imperial.Unit,
+            senderName: this.senderNameInput.value,
+            senderEmail: this.senderEmailInput.value,
+            senderLocation: this.senderLocationInput.value,
+            recipientName: this.recipientNameInput.value,
+            recipientEmail: this.recipientEmailInput.value,
+            message: this.messageInput.value,
+            date: new Date(Date.now()).toString(),
+          });
+          console.log("Weather Text*****", data[0].WeatherText);
+          console.log(
+            "THIS STATE URLS*****",
+            data[0].Temperature.Imperial.Value +
+              data[0].Temperature.Imperial.Unit
+          );
+        })
+        .then((data) => {
+          // if (
+          //   this.senderNameInput.value !== "" &&
+          //   this.senderEmailInput.value !== "" &&
+          //   this.senderLocationInput.value !== "" &&
+          //   this.recipientNameInput.value !== "" &&
+          //   this.recipientEmailInput.value !== "" &&
+          //   this.messageInput.value !== ""
+          // ) {
+          //   let cityKey;
+          //   if (this.senderLocation.Input.value === "Hong Kong") {
+          //     cityKey = 1123655;
+          //   } else if (this.senderLocation.Input.value === "Bangkok") {
+          //     cityKey = 318849;
+          //   } else if (this.senderLocation.Input.value === "London") {
+          //     cityKey = 328328;
+          //   } else if (this.senderLocation.Input.value === "Macau") {
+          //     cityKey = 60090;
+          //   } else if (this.senderLocation.Input.value === "Singapore") {
+          //     cityKey = 300597;
+          //   } else if (this.senderLocation.Input.value === "Paris") {
+          //     cityKey = 623;
+          //   } else if (this.senderLocation.Input.value === "Dubai") {
+          //     cityKey = 323091;
+          //   } else if (this.senderLocation.Input.value === "New York City") {
+          //     cityKey = 349727;
+          //   }
+          //   fetch(
+          //     `http://dataservice.accuweather.com/currentconditions/v1/349727?apikey=ndkujYDJO1SNUaoHApzNT1O2Hjq22LRv`
+          //   )
+          //     .then((data) => data.json())
+          //     .then((data) => {
+          //       console.log("DATA*****", data);
+          //   this.setState({
+          //     senderName: this.senderNameInput.value,
+          //     senderEmail: this.senderEmailInput.value,
+          //     senderLocation: this.senderLocationInput.value,
+          //     recipientName: this.recipientNameInput.value,
+          //     recipientEmail: this.recipientEmailInput.value,
+          //     message: this.messageInput.value,
+          //     date: new Date(Date.now()).toString(),
+          //   });
+          //     })
+          //     .then(() => {
+          this.senderNameInput.value = "";
+          this.senderEmailInput.value = "";
+          this.senderLocationInput.value = "";
+          this.recipientNameInput.value = "";
+          this.recipientEmailInput.value = "";
+          this.messageInput.value = "";
+        });
+      //     })
+      //     // JML: add .catch to cover errors, for best practice
+      //     .catch((err) => {
+      //       console.log("Error:", err);
+      //     });
+      // }
     }
-    e.preventDefault();
   }
+
+  //COMMENTING OUT*****
+  //   createPostcard(e) {
+  //     console.log("SENDER NAME INPUT VALUE*****", this.senderNameInput.value);
+  //     if (
+  //       this.senderNameInput.value !== "" &&
+  //       this.senderEmailInput.value !== "" &&
+  //       this.senderLocationInput.value !== "" &&
+  //       this.recipientNameInput.value !== "" &&
+  //       this.recipientEmailInput.value !== "" &&
+  //       this.messageInput.value !== ""
+  //     ) {
+  //       //   let cityKey;
+  //       //   console.log(
+  //       //     "THIS SENDERLOCATION INPUT VALUE*****",
+  //       //     this.senderLocation.Input.value
+  //       //   );
+  //       //   if (this.senderLocation.Input.value === "Hong Kong") {
+  //       //     cityKey = 1123655;
+  //       //   } else if (this.senderLocation.Input.value === "Bangkok") {
+  //       //     cityKey = 318849;
+  //       //   } else if (this.senderLocation.Input.value === "London") {
+  //       //     cityKey = 328328;
+  //       //   } else if (this.senderLocation.Input.value === "Macau") {
+  //       //     cityKey = 60090;
+  //       //   } else if (this.senderLocation.Input.value === "Singapore") {
+  //       //     cityKey = 300597;
+  //       //   } else if (this.senderLocation.Input.value === "Paris") {
+  //       //     cityKey = 623;
+  //       //   } else if (this.senderLocation.Input.value === "Dubai") {
+  //       //     cityKey = 323091;
+  //       //   } else if (this.senderLocation.Input.value === "New York City") {
+  //       //     cityKey = 349727;
+  //       //   }
+
+  //       //   fetch(
+  //       //     `http://dataservice.accuweather.com/currentconditions/v1/${cityKey}?apikey=ndkujYDJO1SNUaoHApzNT1O2Hjq22LRv`
+  //       //   )
+  //       //     .then((data) => data.json())
+  //       //     .then((data) => {
+  //       this.setState({
+  //         // currentTemperature: data[0].Temperature.Imperial.Value,
+  //         senderName: this.senderNameInput.value,
+  //         senderEmail: this.senderEmailInput.value,
+  //         senderLocation: this.senderLocationInput.value,
+  //         recipientName: this.recipientNameInput.value,
+  //         recipientEmail: this.recipientEmailInput.value,
+  //         message: this.messageInput.value,
+  //         date: new Date(Date.now()).toString(),
+  //       });
+  //       //   console.log("THIS STATE URLS*****", data[0].Temperature.Imperial);
+  //       //   console.log(
+  //       //     "THIS STATE URLS*****",
+  //       //     data[0].Temperature.Imperial.Value + data[0].Temperature.Imperial.Unit
+  //       //   );
+
+  //       //   this.setState({
+  //       //     senderName: this.senderNameInput.value,
+  //       //     senderLocation: this.senderLocationInput.value,
+  //       //     recipientName: this.recipientNameInput.value,
+  //       //     recipientEmail: this.recipientEmailInput.value,
+  //       //     message: this.messageInput.value,
+  //       //     date: new Date(Date.now()).toString(),
+  //       //   });
+  //       // })
+  //       // // JML: add .catch to cover errors, for best practice
+  //       // .catch((err) => {
+  //       //   console.log("Error:", err);
+  //       // });
+
+  //       this.senderNameInput.value = "";
+  //       this.senderEmailInput.value = "";
+  //       this.senderLocationInput.value = "";
+  //       this.recipientNameInput.value = "";
+  //       this.recipientEmailInput.value = "";
+  //       this.messageInput.value = "";
+  //     }
+  //     e.preventDefault();
+  //   }
 
   loadFile(e) {
     let image = document.getElementById("output");
@@ -151,9 +252,11 @@ class MainContain extends React.Component {
           recipientEmail={this.state.recipientEmail}
           message={this.state.message}
           date={this.state.date}
-          currentTemperature={this.state.temperature}
+          weather={this.state.weather}
           image={this.state.image}
         />
+        {/* Adding image: */}
+        <img id="output" width="200" />
         <div className="postcardCreator">
           <form onSubmit={this.createPostcard}>
             <input
