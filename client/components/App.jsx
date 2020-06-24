@@ -12,7 +12,7 @@ class App extends React.Component {
       <div>
         <div id="header">
           <h1>SEND an E-POSTCARD</h1>
-          <div id="instructions">..fill out all fields below!</div>
+          {/* <div id="instructions">..fill out all fields below!</div> */}
           <img
             src="https://i0.wp.com/nguyenvanchuong.com/wp-content/uploads/2019/06/get-a-postcard-in-mail.gif?fit=367%2C400&ssl=1"
             width="60px"
