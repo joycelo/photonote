@@ -19,6 +19,7 @@
   "author": "Joyce Lo",
   "license": "ISC",
   "dependencies": {
+    "@react-pdf/renderer": "^2.0.0-beta.6",
     "browserify": "^10.2.4",
     "express": "^4.12.3",
     "gulp": "^3.9.0",

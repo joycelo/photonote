@@ -17,7 +17,7 @@ class MainContain extends React.Component {
     };
 
     this.createPostcard = this.createPostcard.bind(this);
-    this.loadFile = this.loadFile.bind(this);
+    // this.loadFile = this.loadFile.bind(this);
   }
 
   //Accuweather keys:
@@ -95,6 +95,7 @@ class MainContain extends React.Component {
         .then((data) => {
           this.setState({
             weather:
+              "where it's " +
               data[0].WeatherText.toLowerCase() +
               " @ " +
               data[0].Temperature.Imperial.Value +
@@ -112,6 +113,17 @@ class MainContain extends React.Component {
             "THIS STATE URLS*****",
             data[0].Temperature.Imperial.Value +
               data[0].Temperature.Imperial.Unit
+          );
+        })
+        .then((data) => {
+          window.open(
+            "mailto:" +
+              this.state.recipientEmail +
+              "?subject=Postcard%20Created%20Just%20For%20" +
+              this.state.recipientName +
+              "!%20(From:%20" +
+              this.state.senderName +
+              ")&body=[Note%20to%20sender:%20screenshot%20and%20paste%20postcard%20here]"
           );
         })
         .then((data) => {
@@ -164,7 +176,14 @@ class MainContain extends React.Component {
           this.recipientNameInput.value = "";
           this.recipientEmailInput.value = "";
           this.messageInput.value = "";
+        })
+        .then((data) => {
+          let image = document.getElementById("output");
+          console.log("IMAGE*****", image);
+          image.src = URL.createObjectURL(event.target.files[0]);
+          console.log("IMAGE SRC", image.src);
         });
+
       //     })
       //     // JML: add .catch to cover errors, for best practice
       //     .catch((err) => {
@@ -253,14 +272,14 @@ class MainContain extends React.Component {
   //     e.preventDefault();
   //   }
 
-  loadFile(e) {
-    let image = document.getElementById("output");
-    image.src = URL.createObjectURL(e.target.files[0]);
-    this.setState({
-      image: image.src,
-    });
-    console.log("THIS STATE******", this.state);
-  }
+  //   loadFile(e) {
+  //     let image = document.getElementById("output");
+  //     image.src = URL.createObjectURL(e.target.files[0]);
+  //     this.setState({
+  //       image: image.src,
+  //     });
+  //     console.log("THIS STATE******", this.state);
+  //   }
 
   render() {
     return (
@@ -276,8 +295,6 @@ class MainContain extends React.Component {
           weather={this.state.weather}
           image={this.state.image}
         />
-        {/* Adding image: */}
-        <img id="output" width="200" />
         <div className="postcardCreator">
           <form onSubmit={this.createPostcard}>
             <input
@@ -318,7 +335,6 @@ class MainContain extends React.Component {
               accept="image/*"
               name="image"
               id="file"
-              onChange={(g) => (this.imageFile = g)}
               style={{ display: "none" }}
             ></input>
             <p>
@@ -327,12 +343,12 @@ class MainContain extends React.Component {
                 style={{ cursor: "pointer" }}
                 id="upload-image-button"
               >
-                Upload Image (Optional)
+                Click to Add Image (Optional)
               </label>
             </p>
             <br />
             <button type="submit" id="send-postcard-button">
-              Send Postcard
+              Create Postcard
             </button>
           </form>
         </div>

@@ -12,14 +12,27 @@ body {
   background-size: cover;
 }
 
-h1 {
-  text-align: center;
-  font-family: Pangolin;
-  color: #fff70a;
-  text-shadow: 2px 2px #a232a8;
-  font-size: 55;
+#header {
   position: relative;
-  top: 20px;
+  top: 10px;
+  left: 50px;
+}
+
+h1 {
+  /* text-align: center; */
+  font-family: Pangolin;
+  color: yellow;
+  text-shadow: 2px 3px rgb(220, 0, 150);
+  font-size: 45;
+  position: relative;
+  top: 15px;
+  letter-spacing: 3px;
+}
+
+#header-pic {
+  position: absolute;
+  top: 10px;
+  left: 503px;
 }
 
 #create-text {
@@ -67,22 +80,43 @@ input::placeholder {
   font-family: Pangolin;
 }
 
-#upload-image-button {
+label {
   font-size: 17;
   font-weight: thin;
   font-family: Pangolin;
+  color: rgb(41, 80, 233);
+  background-color: lightcyan;
+  padding: 5px;
+  border: 2px dotted red;
+  border-radius: 3px;
+  box-shadow: 2px 2px rgb(113, 113, 232);
+}
+
+#optional-text {
+  font-size: 10;
+}
+
+#upload-image-button {
+  float: left;
+  position: relative;
+  left: 83px;
 }
 
 #send-postcard-button {
   font-size: 17;
   font-weight: thin;
   font-family: Pangolin;
+  position: relative;
+  right: 72px;
+  top: -20px;
+  float: right;
 }
 
 button {
   margin: 10px;
   height: 30px;
-  background-color: lightcyan;
+  background-color: rgb(138, 250, 121);
+  box-shadow: 2px 2px green;
   border-radius: 5px;
   font-weight: thin;
   font-size: 16;
@@ -132,8 +166,8 @@ button {
   width: 600px;
   height: 400px;
   position: absolute;
-  top: 180px;
-  left: 540px;
+  top: 155px;
+  left: 490px;
   z-index: 0;
 }
 
@@ -148,7 +182,7 @@ button {
   top: 0;
   left: 10px;
   z-index: 1;
-  width: 250px;
+  width: 300px;
   height: 400px;
 }
 
@@ -157,7 +191,7 @@ button {
   top: 0;
   left: 20px;
   z-index: 1;
-  width: 300px;
+  width: 350px;
   height: 400px;
 }
 
@@ -185,6 +219,12 @@ button {
 #message {
   background-color: rgba(0, 11, 75, 0.482);
 }
+
+/* #sender-info {
+  position: relative;
+  top: 280px;
+  left: 10px;
+} */
 
 #date {
   text-align: center;
