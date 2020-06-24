@@ -16,13 +16,14 @@ body {
   position: relative;
   top: 10px;
   left: 50px;
+  /* left: 85px; */
 }
 
 h1 {
   /* text-align: center; */
   font-family: Pangolin;
-  color: yellow;
-  text-shadow: 2px 3px rgb(220, 0, 150);
+  color: rgb(255, 255, 0);
+  text-shadow: 3px 3px 3px rgb(255, 73, 41);
   font-size: 45;
   position: relative;
   top: 15px;
@@ -54,6 +55,7 @@ input {
   border: 2px dotted red;
   border-radius: 3px;
   margin: 1px;
+  box-shadow: 3px 3px 3px rgb(3, 70, 129);
 }
 
 textarea {
@@ -62,6 +64,7 @@ textarea {
   border: 2px dotted red;
   border-radius: 3px;
   margin: 1px;
+  box-shadow: 3px 3px 3px rgb(3, 70, 129);
 }
 
 textarea::placeholder {
@@ -84,11 +87,11 @@ label {
   font-size: 17;
   font-weight: thin;
   font-family: Pangolin;
-  color: rgb(41, 80, 233);
-  background-color: lightcyan;
-  padding: 5px;
+  color: blue;
+  background-color: rgb(255, 240, 223);
+  padding: 7px;
   border: 2px dotted red;
-  border-radius: 3px;
+  border-radius: 5px;
   box-shadow: 2px 2px rgb(113, 113, 232);
 }
 
@@ -100,6 +103,7 @@ label {
   float: left;
   position: relative;
   left: 83px;
+  top: -3px;
 }
 
 #send-postcard-button {
@@ -108,19 +112,21 @@ label {
   font-family: Pangolin;
   position: relative;
   right: 72px;
-  top: -20px;
+  top: -30px;
   float: right;
+  height: 40px;
 }
 
 button {
   margin: 10px;
-  height: 30px;
-  background-color: rgb(138, 250, 121);
+  height: 35px;
+  background-color: rgb(95, 255, 71);
   box-shadow: 2px 2px green;
   border-radius: 5px;
   font-weight: thin;
   font-size: 16;
   border: 2px dotted red;
+  color: blue;
 }
 
 #input-message {
@@ -139,6 +145,7 @@ button {
   border: 9px solid black;
   border-image: url("https://i.ya-webdesign.com/images/create-png-photoshop-1.png")
     10 round;
+  box-shadow: 3px 3px 3px rgb(3, 70, 129);
   background-color: yellow;
   padding: 10px;
   width: 591px;
