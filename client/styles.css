@@ -5,17 +5,21 @@ body {
 }
 
 body {
+  display: flex;
+  justify-content: center;
   background-color: #e5ff96;
-  text-align: center;
   background-image: url("https://download.hipwallpaper.com/desktop/1600/900/34/2/wbNgmd.jpg");
+  background-size: cover;
 }
 
 h1 {
   text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Pangolin;
   color: #fff70a;
   text-shadow: 1px 1px #a232a8;
-  font-size: 42;
+  font-size: 55;
+  position: relative;
+  top: 20px;
 }
 
 #create-text {
@@ -31,8 +35,27 @@ h1 {
 }
 
 input {
-  width: 45%;
+  width: 35%;
+  height: 30px;
   padding: 3px;
+  border: 2px dotted red;
+  border-radius: 3px;
+  margin: 1px;
+}
+
+textarea {
+  width: 35%;
+  padding: 3px;
+  border: 2px dotted red;
+  border-radius: 3px;
+  margin: 1px;
+}
+
+textarea::placeholder {
+  font-size: 16;
+  font-weight: thin;
+  color: lightgrey;
+  font-family: Arial;
 }
 
 input::placeholder {
@@ -42,15 +65,60 @@ input::placeholder {
   color: lightgrey;
 }
 
+button {
+  margin: 10px;
+  height: 30px;
+  background-color: lightcyan;
+  border-radius: 5px;
+  font-weight: thin;
+  font-size: 16;
+  border: 2px dotted red;
+}
+
 #input-message {
   height: 20%;
 }
 
 .postcardDisplayed {
   display: inline-block;
-  border: 1px solid black;
+  border: 9px solid black;
+  border-image: url("https://i.ya-webdesign.com/images/create-png-photoshop-1.png")
+    10 round;
   background-color: yellow;
+  padding: 10px;
   width: 591px;
   height: 399px;
   margin: 20px;
+  font-family: Pangolin;
+  font-size: 18;
+  color: blue;
+  overflow: hidden;
+}
+
+#addedImage {
+  width: 600px;
+  height: 400px;
+  position: absolute;
+  top: 180px;
+  left: 525px;
+  border: 0;
+  z-index: 0;
+}
+
+#date {
+  position: relative;
+  top: 0;
+  left: 10px;
+}
+
+#left-side {
+  position: relative;
+  top: 0;
+  left: 10px;
+}
+
+#right-side {
+  position: relative;
+  top: 0;
+  right: 10px;
 }
