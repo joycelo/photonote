@@ -55,14 +55,28 @@ textarea::placeholder {
   font-size: 16;
   font-weight: thin;
   color: lightgrey;
-  font-family: Arial;
+  font-family: Pangolin;
+  font-size: 17;
 }
 
 input::placeholder {
   text-align: left;
-  font-size: 16;
+  font-size: 17;
   font-weight: thin;
   color: lightgrey;
+  font-family: Pangolin;
+}
+
+#upload-image-button {
+  font-size: 17;
+  font-weight: thin;
+  font-family: Pangolin;
+}
+
+#send-postcard-button {
+  font-size: 17;
+  font-weight: thin;
+  font-family: Pangolin;
 }
 
 button {

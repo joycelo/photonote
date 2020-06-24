@@ -1,13 +1,11 @@
 import React from "react";
-// import { urlencoded } from "express";
-// import html2canvas from "html2canvas";
-// const puppeteer = require("puppeteer");
 
 class PostcardDisplay extends React.Component {
   render() {
-    let senderName = (
+    let senderNameEmail = (
       <div key={this.props.senderName + 1}>
-        <span id="from-text">FROM</span> {this.props.senderName}
+        <span id="from-text">FROM</span> {this.props.senderName} [
+        {this.props.senderEmail}]
       </div>
     );
     let senderLocation = (
@@ -30,6 +28,7 @@ class PostcardDisplay extends React.Component {
     let temperature = (
       <div key={this.props.temperature + 7}>{this.props.temperature}</div>
     );
+    let image = <div key={this.props.image + 8}>{this.props.image}</div>;
 
     console.log("TEMPERATURE******", temperature);
 
@@ -110,8 +109,10 @@ class PostcardDisplay extends React.Component {
             {/* <div id="recipientEmail">{recipientEmail}</div> */}
             <div id="message">{message}</div>
             <br />
-            <div id="senderName">{senderName}</div>
+            <div id="senderName">{senderNameEmail}</div>
             <div id="senderLocation">{senderLocation}</div>
+            <img id="output" width="200" />
+            {image}
           </div>
         </div>
         <div id="vertical-line"></div>

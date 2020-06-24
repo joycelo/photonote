@@ -12,8 +12,6 @@
       href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap"
       rel="stylesheet"
     />
-    <!-- screenshot -->
-    <script src="/path/to/html2canvas.min.js"></script>
   </head>
 
   <body>
@@ -25,19 +23,5 @@
 
     <!-- uncomment below and comment out the tag above for gulp/browserify challenge -->
     <!-- <script src="build/browserify-bundle.js"></script> -->
-    <script>
-        html2canvas(document.getElementsByClassName("postCardDisplayed")[0]).then(
-          function makeScreenshot() {
-          html2canvas(document.getElementById("screenshot"), {scale: 2}).then(canvas => {
-              var main = document.getElementById("main");
-              while (main.firstChild) {
-                main.removeChild(main.firstChild);
-              }
-
-              // for Firefox
-              main.appendChild(canvas);
-          });
-      }
-    </script>
   </body>
 </html>

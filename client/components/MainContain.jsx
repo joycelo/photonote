@@ -6,15 +6,18 @@ class MainContain extends React.Component {
     super();
     this.state = {
       senderName: null,
+      senderEmail: null,
       senderLocation: null,
       recipientName: null,
       recipientEmail: null,
       message: null,
       date: null,
       currentTemperature: null,
+      image: null,
     };
 
     this.createPostcard = this.createPostcard.bind(this);
+    this.loadFile = this.loadFile.bind(this);
   }
 
   //Accuweather keys:
@@ -54,6 +57,7 @@ class MainContain extends React.Component {
     console.log("SENDER NAME INPUT VALUE*****", this.senderNameInput.value);
     if (
       this.senderNameInput.value !== "" &&
+      this.senderEmailInput.value !== "" &&
       this.senderLocationInput.value !== "" &&
       this.recipientNameInput.value !== "" &&
       this.recipientEmailInput.value !== "" &&
@@ -90,6 +94,7 @@ class MainContain extends React.Component {
       this.setState({
         // currentTemperature: data[0].Temperature.Imperial.Value,
         senderName: this.senderNameInput.value,
+        senderEmail: this.senderEmailInput.value,
         senderLocation: this.senderLocationInput.value,
         recipientName: this.recipientNameInput.value,
         recipientEmail: this.recipientEmailInput.value,
@@ -117,6 +122,7 @@ class MainContain extends React.Component {
       // });
 
       this.senderNameInput.value = "";
+      this.senderEmailInput.value = "";
       this.senderLocationInput.value = "";
       this.recipientNameInput.value = "";
       this.recipientEmailInput.value = "";
@@ -125,49 +131,85 @@ class MainContain extends React.Component {
     e.preventDefault();
   }
 
+  loadFile(e) {
+    let image = document.getElementById("output");
+    image.src = URL.createObjectURL(e.target.files[0]);
+    this.setState({
+      image: image.src,
+    });
+    console.log("THIS STATE******", this.state);
+  }
+
   render() {
     return (
       <div className="mainContainer">
         <PostcardDisplay
           senderName={this.state.senderName}
+          senderEmail={this.state.senderEmail}
           senderLocation={this.state.senderLocation}
           recipientName={this.state.recipientName}
           recipientEmail={this.state.recipientEmail}
           message={this.state.message}
           date={this.state.date}
-          currentTemperature={this.state}
+          currentTemperature={this.state.temperature}
+          image={this.state.image}
         />
         <div className="postcardCreator">
           <form onSubmit={this.createPostcard}>
             <input
-              placeholder="Your Name"
+              placeholder="YOUR NAME"
               ref={(a) => (this.senderNameInput = a)}
             ></input>
             <br />
             <input
-              placeholder="Your Location"
-              ref={(b) => (this.senderLocationInput = b)}
+              placeholder="YOUR E-MAIL"
+              ref={(b) => (this.senderEmailInput = b)}
             ></input>
             <br />
             <input
-              placeholder="Recipient's Name"
-              ref={(c) => (this.recipientNameInput = c)}
+              placeholder="YOUR LOCATION (CITY)"
+              ref={(c) => (this.senderLocationInput = c)}
             ></input>
             <br />
             <input
-              placeholder="Recipient's e-mail"
-              ref={(d) => (this.recipientEmailInput = d)}
+              placeholder="RECIPIENT'S NAME"
+              ref={(d) => (this.recipientNameInput = d)}
+            ></input>
+            <br />
+            <input
+              placeholder="RECIPIENT'S E-MAIL"
+              ref={(e) => (this.recipientEmailInput = e)}
             ></input>
             <br />
             <textarea
               name="message"
               rows="10"
               cols="30"
-              placeholder="Message"
-              ref={(e) => (this.messageInput = e)}
+              placeholder="MESSAGE"
+              ref={(f) => (this.messageInput = f)}
             ></textarea>
             <br />
-            <button type="submit">Send Postcard</button>
+            <input
+              type="file"
+              accept="image/*"
+              name="image"
+              id="file"
+              onChange={(g) => (this.imageFile = g)}
+              style={{ display: "none" }}
+            ></input>
+            <p>
+              <label
+                for="file"
+                style={{ cursor: "pointer" }}
+                id="upload-image-button"
+              >
+                Upload Image (Optional)
+              </label>
+            </p>
+            <br />
+            <button type="submit" id="send-postcard-button">
+              Send Postcard
+            </button>
           </form>
         </div>
       </div>
