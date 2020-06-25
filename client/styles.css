@@ -184,7 +184,7 @@ button {
   height: 400px;
   position: absolute;
   top: 155px;
-  left: 540px;
+  left: 547px;
   z-index: 0;
 }
 
@@ -262,7 +262,7 @@ button {
   height: 290px;
   position: absolute;
   top: 220px;
-  left: 860px;
+  left: 870px;
   z-index: 1;
 }
 
@@ -270,6 +270,7 @@ button {
   position: absolute;
   top: 170px;
   left: 1040px;
+  z-index: 1;
 }
 
 #output {
